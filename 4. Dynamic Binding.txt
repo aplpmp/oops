@@ -1,0 +1,70 @@
+import java.util.Scanner;
+
+abstract class Shape {
+    double length, height;
+
+    abstract double compute_area();
+}
+
+class Triangle extends Shape {
+
+    double area;
+
+    void set_dimensions(double b, double h) {
+        length = b;
+        height = h;
+    }
+
+    double compute_area() {
+        area = 0.5 * length * height;
+        return area;
+    }
+}
+
+class Rectangle extends Shape {
+
+    double area;
+
+    void set_dimensions(double l, double h) {
+        length = l;
+        height = h;
+    }
+
+    double compute_area() {
+        area = length * height;
+        return area;
+    }
+}
+
+class shape_area {
+
+    public static void main(String[] args) {
+
+        double base, height, lenght, breath, area;
+
+        Triangle t1 = new Triangle();
+        Rectangle r1 = new Rectangle();
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter Base of the Triangle : ");
+        base = sc.nextDouble();
+
+        System.out.println("\nEnter Height of the Triangle : ");
+        height = sc.nextDouble();
+
+        t1.set_dimensions(base, height);
+        area = t1.compute_area();
+        System.out.println("\nArea of the Traiangle is : " + area);
+
+        System.out.println("\nEnter Length of the Triangle : ");
+        lenght = sc.nextDouble();
+
+        System.out.println("\nEnter Breadth of the Triangle : ");
+        breath = sc.nextDouble();
+
+        r1.set_dimensions(lenght, breath);
+        area = r1.compute_area();
+        System.out.println("\nArea of the Rectangle is : " + area);
+
+    }
+}

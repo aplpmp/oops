@@ -1,0 +1,24 @@
+import java.util.*;
+
+class ExceptionAssign {
+	public static void main(String[] args) {
+		int num1, num2, result;
+		Scanner in = new Scanner(System.in);
+
+		try {
+			System.out.println("Enter the first number");
+			num1 = Integer.parseInt(in.next());
+
+			System.out.println("Enter the second number");
+			num2 = Integer.parseInt(in.next());
+
+			result = num1 / num2;
+			System.out.println("Division: " + result);
+
+		} catch (ArithmeticException e) {
+			System.out.println(e + " : Divide by zero is not possible");
+		} catch (NumberFormatException e) {
+			System.out.println(e + " is not an integer");
+		}
+	}
+}

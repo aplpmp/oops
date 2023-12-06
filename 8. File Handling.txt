@@ -1,0 +1,96 @@
+import java.io.*;
+import java.util.*;
+
+class Database {
+
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+    void addRecords() throws IOException {
+
+        PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("sample.txt", true)));
+
+        String studentName, address, s;
+        int rollNo, Class, studentID;
+        float marks;
+        boolean addMore = false;
+
+        do {
+
+            System.out.println("\nEnter Student Name : ");
+            studentName = br.readLine();
+
+            System.out.println("Student ID : ");
+            studentID = Integer.parseInt(br.readLine());
+
+            System.out.println("Class : ");
+            Class = Integer.parseInt(br.readLine());
+
+            System.out.println("Roll No : ");
+            rollNo = Integer.parseInt(br.readLine());
+
+            System.out.println("Address : ");
+            address = br.readLine();
+
+            System.out.println("Marks : ");
+            marks = Float.parseFloat(br.readLine());
+
+            pw.println(studentName + " " + studentID + " " + Class + " " + rollNo + " " + address + " " + marks);
+
+            System.out.println("\nDo you want to add more Data : (y/n)");
+            s = br.readLine();
+
+            if (s.equalsIgnoreCase("y")) {
+                addMore = true;
+            } else {
+                addMore = false;
+            }
+
+        } while (addMore);
+        pw.close();
+    }
+
+    void readRecords() throws IOException {
+        BufferedReader file = new BufferedReader(new FileReader("sample.txt"));
+
+        try {
+            String name;
+
+            while ((name = file.readLine()) != null) {
+                System.out.println("\n" + name);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File Not Found!!!");
+        }
+    }
+}
+
+class filehandling {
+    public static void main(String[] args) throws IOException {
+        Database d = new Database();
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+
+            System.out.println("1: Add Records\n2: Display Records\n3: Exit");
+            System.out.println("\nEnter your Choice : ");
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    d.addRecords();
+                    System.out.println("=======================\n");
+                    break;
+                case 2:
+                    d.readRecords();
+                    System.out.println("=======================\n");
+                    break;
+                case 3:
+                    return;
+                default:
+                    System.out.println("\nInvalid Choice");
+                    System.out.println("=======================\n");
+                    break;
+            }
+        }
+    }
+}
