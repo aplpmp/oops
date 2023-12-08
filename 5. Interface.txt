@@ -1,0 +1,74 @@
+interface Vehicle {
+    void changeGear(int a);
+
+    void speedUp(int a);
+
+    void applyBrakes(int a);
+}
+
+class Bicycle implements Vehicle {
+
+    int speed = 10;
+    int newGear;
+
+    public void changeGear(int gear) {
+        newGear = gear;
+    }
+
+    public void speedUp(int increament) {
+        speed = speed + increament;
+    }
+
+    public void applyBrakes(int decreament) {
+        speed = speed - decreament;
+    }
+
+    void printState() {
+        System.out.println("Bicycle \n" + "speed :" + speed + "\n gear :" + newGear);
+    }
+
+}
+
+class Bike implements Vehicle {
+
+    int speed = 20;
+    int newGear;
+
+    public void changeGear(int gear) {
+        newGear = gear;
+    }
+
+    public void speedUp(int increament) {
+        speed = speed + increament;
+    }
+
+    public void applyBrakes(int decreament) {
+        speed = speed - decreament;
+    }
+
+    void printState() {
+        System.out.println("Bicycle \n" + "speed :" + speed + "\ngear :" + newGear);
+
+    }
+
+}
+
+class interfaceAssign {
+
+    public static void main(String[] args) {
+
+        Bicycle bicycle = new Bicycle();
+        bicycle.changeGear(2);
+        bicycle.speedUp(30);
+        bicycle.applyBrakes(10);
+        bicycle.printState();
+
+        Bike bike = new Bike();
+        bike.changeGear(3);
+        bike.speedUp(40);
+        bike.applyBrakes(15);
+        bike.printState();
+
+    }
+
+}

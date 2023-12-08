@@ -1,0 +1,108 @@
+import java.util.*;
+
+class Generic_Demo<T> {
+    ArrayList<T> list = new ArrayList<T>();
+
+    public void assign(T local_array[], int n) {
+        for (int i = 0; i < n; i++) {
+            list.add(local_array[i]);
+        }
+
+    }
+
+    public void display_list() {
+        Iterator<T> itr = list.iterator();
+        while (itr.hasNext()) {
+            System.out.println(itr.next());
+        }
+    }
+
+    public void check_palindroms() {
+        String s, r;
+        T temp;
+        boolean flag = false;
+        Iterator<T> itr = list.iterator();
+        System.out.println("\nPalindrome String are:");
+        while (itr.hasNext()) {
+            temp = itr.next();
+            s = temp.toString();
+            StringBuilder sr = new StringBuilder(s);
+            r = sr.reverse().toString();
+            if (s.equals(r)) {
+                flag = true;
+                System.out.println("Palindrome:" + temp);
+
+            }
+
+        }
+        if (flag == false) {
+            System.out.println("\nPalindrome Not Found!!!!");
+        }
+
+    }
+
+    public void count_odd_even() {
+        int even = 0, odd = 0;
+        Iterator<T> itr = list.iterator();
+        T temp;
+        String s;
+        int i;
+        double d;
+        while (itr.hasNext()) {
+            temp = itr.next();
+            s = temp.toString();
+            i = Integer.parseInt(s);
+            if (i % 2 == 0) {
+                even++;
+            } else {
+                odd++;
+            }
+
+        }
+        System.out.println("\nEven Integer Elements:" + even);
+        System.out.println("Odd Integer Elements:" + odd);
+
+    }
+}
+
+class Generics {
+    public static void main(String arge[]) {
+        int i, n = 0;
+        Scanner in_obj = new Scanner(System.in);
+        System.out.println(":\nHow many Integer Elements you want:");
+        n = in_obj.nextInt();
+        Integer a[] = new Integer[n];
+
+        System.out.println("\nEnter Elements:");
+        for (i = 0; i < n; i++) {
+            a[i] = in_obj.nextInt();
+        }
+        Generic_Demo<Integer> Int_obj = new Generic_Demo<Integer>();
+        Int_obj.assign(a, n);
+        Int_obj.count_odd_even();
+
+        System.out.println("\nHow many Double Elements you want:");
+        n = in_obj.nextInt();
+        Double b[] = new Double[n];
+        System.out.println("\nEnter Elements:");
+        for (i = 0; i < n; i++) {
+            b[i] = in_obj.nextDouble();
+        }
+
+        Generic_Demo<Double> Doub_Obj = new Generic_Demo<Double>();
+        Doub_Obj.assign(b, n);
+        Doub_Obj.display_list();
+
+        System.out.println("\nHow Many String elements you want:");
+        n = in_obj.nextInt();
+        String c[] = new String[n];
+        System.out.println("\nEnter Elements:");
+        for (i = 0; i < n; i++) {
+            c[i] = in_obj.next();
+        }
+
+        Generic_Demo<String> Str_Obj = new Generic_Demo<String>();
+        Str_Obj.assign(c, n);
+        Str_Obj.check_palindroms();
+    }
+}

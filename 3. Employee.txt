@@ -1,0 +1,69 @@
+class Empolyee {
+    String Empname, Address;
+    int Empid;
+    float Basicpay;
+
+    void salary() {
+        float da, hra, pf, cf;
+        da = Basicpay * 97 / 100;
+        hra = Basicpay * 10 / 100;
+        pf = Basicpay * 12 / 100;
+        cf = Basicpay * 18 / 100;
+        float gross = Basicpay + hra - pf - cf;
+
+        System.out.println("Emp ID:" + Empid);
+        System.out.println("Emp Name:" + Empname);
+        System.out.println("Basic Salary:" + Basicpay);
+        System.out.println("Gross Salary:" + gross + "\n\n");
+    }
+
+}
+
+class Progarammer extends Empolyee {
+    Progarammer(int Empid, String Empname, int sal) {
+        this.Empid = Empid;
+        this.Empname = Empname;
+        Basicpay = sal;
+    }
+}
+
+class Teamlead extends Empolyee {
+    Teamlead(int Empid, String Empname, int sal) {
+        this.Empid = Empid;
+        this.Empname = Empname;
+        Basicpay = sal;
+    }
+}
+
+class APM extends Empolyee {
+    APM(int Empid, String Empname, int sal) {
+        this.Empid = Empid;
+        this.Empname = Empname;
+        Basicpay = sal;
+    }
+}
+
+class Projectmanager extends Empolyee {
+    Projectmanager(int Empid, String Empname, int sal) {
+        this.Empid = Empid;
+        this.Empname = Empname;
+        Basicpay = sal;
+    }
+}
+
+class Inheritance {
+    public static void main(String[] args) {
+        Progarammer p = new Progarammer(1, "lokesh patil", 400000);
+        p.salary();
+
+        Teamlead t = new Teamlead(2, "Aniket", 500000);
+        t.salary();
+
+        APM a = new APM(3, "muskan", 100000);
+        a.salary();
+
+        Projectmanager g = new Projectmanager(4, "snehal", 50000);
+        g.salary();
+
+    }
+}
