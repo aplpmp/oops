@@ -1,0 +1,103 @@
+import java.util.Scanner;
+
+class Publication {
+    String title;
+    int price;
+    int copies;
+    int total;
+
+}
+
+class Book extends Publication {
+    String author;
+    Scanner sc1 = new Scanner(System.in);
+
+    public void orderCopies() {
+        System.out.println("Enter Name of Book:");
+        title = sc1.nextLine();
+        System.out.println("Enter the Author name:");
+        author = sc1.nextLine();
+        System.out.println("Enter number of copies you want:");
+        copies = sc1.nextInt();
+        System.out.println("Enter price of Book you choose:");
+        price = sc1.nextInt();
+    }
+
+    public void saleCopy(int num) {
+        System.out.println("Name of book: " + title);
+        System.out.println("Name of the Author: " + author);
+        System.out.println("Number of copies: " + copies);
+        System.out.println("Cost of the book: " + price);
+
+        if (num >= copies) {
+            num = num - copies;
+            total = total + copies * price;
+            System.out.println("\nYou purchased " + copies + " copies.\nYou have to pay: " + total);
+        } else {
+            System.out.println("\nINSUFFICIENT STOCK!!!!!!!\n");
+        }
+    }
+}
+
+class Magazine extends Publication {
+    String author;
+    Scanner sc1 = new Scanner(System.in);
+
+    public void orderQty() {
+        System.out.println("Enter Name of magazine:");
+        title = sc1.nextLine();
+        System.out.println("Enter the Author name:");
+        author = sc1.nextLine();
+        System.out.println("Enter number of copies you want:");
+        copies = sc1.nextInt();
+        System.out.println("Enter price of magazine you choose:");
+        price = sc1.nextInt();
+    }
+
+    public void saleCopy(int num) {
+        System.out.println("Name of magazine: " + title);
+        System.out.println("Name of the Author: " + author);
+        System.out.println("Number of copies: " + copies);
+        System.out.println("Cost of the magazine: " + price);
+
+        if (num >= copies) {
+            num = num - copies;
+            total = total + copies * price;
+            System.out.println("\nYou purchased " + copies + " copies.\nYou have to pay: " + total);
+        } else {
+            System.out.println("\nINSUFFICIENT STOCK!!!!!!!\n");
+        }
+    }
+}
+
+public class polymorphism {
+    public static void main(String[] args) {
+        Book bk = new Book();
+        Magazine mz = new Magazine();
+
+        System.out.println("---------------------------");
+        System.out.println("WELCOME TO THE BOOK INVENTORY");
+        System.out.println("------------------------------");
+
+        System.out.println("Please enter which data to be displayed: \n1) BOOK \n2) MAGAZINE\n");
+        Scanner sc = new Scanner(System.in);
+        int ch = sc.nextInt();
+        switch (ch) {
+            case 1:
+                System.out.println("You chose Book");
+                System.out.println("Enter total no. of copies of Book:");
+                int n1 = sc.nextInt();
+                bk.orderCopies();
+                bk.saleCopy(n1);
+                break;
+
+            case 2:
+                System.out.println("You chose Magazine");
+                System.out.println("Enter total no. of copies of Magazine:");
+                int n2 = sc.nextInt();
+                mz.orderQty();
+                mz.saleCopy(n2);
+                break;
+        }
+    }
+}
